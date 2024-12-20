@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- CSS : HTML의 모양을 꾸미는 작업(크기, 색상, 글꼴, 정렬) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- script src = "주소"-->
+    <!-- JavaScript : HTML의 동작(애니메이션) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<pre>
+    DOM는 HTML 요소(태그)에서 수행할 수 있는 작업들의 모임
+
+    [HTML 요소 찾기]
+    getElementById("id명") : 해당 id의 요소를 읽어온다.
+    getElementsByClassName("클래스명") : 해당 클래스의 요소를 읽어온다.
+    getElementsByTagName("태그명") : 해당 태그의 요소를 읽어온다.
+
+    [해당 요소 변경]
+    요소.innerHTML = 변경내용 : 태그사이에 내용을 출력
+    요소.attribute = 값 : 태그의 속성값을 변경(배경색, 높이, 폭, 글자체)
+    요소.style.property = 새로운 스타일 : 태그의 새로운 스타일을 적용
+    요소.setAttribute(속성명, 값) : 지정한 속성의 값을 변경
+
+    [요소 추가 및 삭제]
+    document.createElement(요소) : HTML에 지정된 요소를 생성
+    document.removeChild(요소) : HTML에서 해당 요소를 삭제
+    document.appendChild(요소) : HTML에서 해당 요소를 추가
+    document.replaceChild(새로운내용, 이전내용) : HTML에서 해당 요소의 내용을 변경
+    document.write(문자열) : HTML에 출력
+</pre>
+
+<p id="ex1"></p>
+<p>결과 : <span id="ex2"></span></p>
+
+<p id="intro">인트로 안내</p>
+<p>이 페이지는 연습용입니다. <b>getElementById</b>함수 활용</p>
+<p id="result">결과 출력</p>
+<p id="presult">p태그 결과</p>
+
+<!------------->
+<p>클래스를 이용한 찾기</p>
+<p class="intro">안녕하세요!!</p>
+<p class="intro cont">동일한 클래스 이름으로 설정한 태그</p>
+<p id="result2">클래스 찾기 결과</p>
+<script>
+    document.getElementById(ex1).innerHTML="안녕하세요.";
+    document.getElementById(ex2).innerHTML="합격입니다.";
+
+    //인트로
+    //let, var는 변수 선언 후 변수값을 변경하면서 사용할 때
+    //const는 변수에 값을 저장 후 사용만 할때(값의 변화가 없을 때)
+    const element = document.getElementById("intro"); //해당 id를 읽어서 element에 저장
+    //인트로 안내 //element("intro") 태그 사이의 값을 result태그 사이에 저장
+    document.getElementById("result").innerHTML = "새로운 문자열" + element.innerHTML;
+
+    //태그이름 찾기
+    //모든 p태그가 배열로 저장
+    const tagElement = document.getElementsByTagName("p"); // p태그를 저장
+    document.getElementById("presult").innerHTML = "첫번째 p태그의 내용 : " + tagElement[0].innerHTML;
+
+    //-클래스 찾기
+    const x = document.getElementsByClassName("intro"); //해당클래스를 사용하는 태그를 배열로 저장
+    document.getElementById("result2").innerHTML="intro 클래스를 사용하는 첫번째태그 : "+x[0].innerHTML;
+</script>
+
+
+</body>
+</html>
